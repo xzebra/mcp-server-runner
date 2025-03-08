@@ -1,0 +1,94 @@
+{
+  "name": "mcp-server-runner",
+  "displayName": "MCP Server Runner",
+  "description": "Manage, save and run Model Context Protocol (MCP) servers locally",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcp-server-runner.addServer",
+        "title": "MCP: Add Server Configuration"
+      },
+      {
+        "command": "mcp-server-runner.editServer",
+        "title": "MCP: Edit Server Configuration"
+      },
+      {
+        "command": "mcp-server-runner.deleteServer",
+        "title": "MCP: Delete Server Configuration"
+      },
+      {
+        "command": "mcp-server-runner.startServer",
+        "title": "MCP: Start Server"
+      },
+      {
+        "command": "mcp-server-runner.stopServer",
+        "title": "MCP: Stop Server"
+      },
+      {
+        "command": "mcp-server-runner.viewLogs",
+        "title": "MCP: View Server Logs"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mcp-servers",
+          "title": "MCP Servers",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mcp-servers": [
+        {
+          "id": "mcpServersView",
+          "name": "Servers"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MCP Server Runner",
+      "properties": {
+        "mcpServerRunner.servers": {
+          "type": "array",
+          "default": [],
+          "description": "List of MCP server configurations"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "echo \"No linting configured\"",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.3"
+  },
+  "publisher": "mcp-server-runner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mcp-server-runner.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  }
+}
